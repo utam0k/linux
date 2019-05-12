@@ -11,7 +11,7 @@
  * PMD_SHIFT determines the size of the area a middle-level
  * page table can map
  */
-#define PMD_SHIFT	21
+#define PMD_SHIFT	21 // offset 12 + table 9 bit
 #define PTRS_PER_PMD	512
 
 /*

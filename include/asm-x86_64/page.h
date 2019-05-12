@@ -6,11 +6,11 @@
 /* PAGE_SHIFT determines the page size */
 #define PAGE_SHIFT	12
 #ifdef __ASSEMBLY__
-#define PAGE_SIZE	(0x1 << PAGE_SHIFT)
+#define PAGE_SIZE	(0x1 << PAGE_SHIFT) // 2^12
 #else
 #define PAGE_SIZE	(1UL << PAGE_SHIFT)
 #endif
-#define PAGE_MASK	(~(PAGE_SIZE-1))
+#define PAGE_MASK	(~(PAGE_SIZE-1)) // 0xfffff000
 #define PHYSICAL_PAGE_MASK	(~(PAGE_SIZE-1) & (__PHYSICAL_MASK << PAGE_SHIFT))
 
 #define THREAD_ORDER 1 

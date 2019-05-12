@@ -43,9 +43,9 @@
  * These are used to make use of C type-checking..
  */
 extern int nx_enabled;
-#ifdef CONFIG_X86_PAE
+#ifdef CONFIG_X86_PAE // 拡張するべ？
 extern unsigned long long __supported_pte_mask;
-typedef struct { unsigned long pte_low, pte_high; } pte_t;
+typedef struct { unsigned long pte_low, pte_high; } pte_t; // 32 + 32. 拡張なしだとptd_lowのみ
 typedef struct { unsigned long long pmd; } pmd_t;
 typedef struct { unsigned long long pgd; } pgd_t;
 typedef struct { unsigned long long pgprot; } pgprot_t;
@@ -73,6 +73,7 @@ typedef struct { unsigned long pgprot; } pgprot_t;
 #define pgd_val(x)	((x).pgd)
 #define pgprot_val(x)	((x).pgprot)
 
+// Cast __pte<-> pte_val
 #define __pte(x) ((pte_t) { (x) } )
 #define __pgd(x) ((pgd_t) { (x) } )
 #define __pgprot(x)	((pgprot_t) { (x) } )

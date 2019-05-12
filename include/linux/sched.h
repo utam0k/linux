@@ -107,7 +107,7 @@ extern unsigned long nr_iowait(void);
 
 #define TASK_RUNNING		0
 // ある条件が成り立つまで一時停止
-#define TASK_INTERRUPTIBLE	1 
+#define TASK_INTERRUPTIBLE	1
 #define TASK_UNINTERRUPTIBLE	2
 // SIGSTOP, SIGTSTP, SIGTTIN, SIGTTOUシグナルを受信するとなる
 #define TASK_STOPPED		4
@@ -621,6 +621,7 @@ struct task_struct {
 	unsigned long personality;
 	unsigned did_exec:1;
 	pid_t pid;
+    // スレッドグループリーダー
 	pid_t tgid;
 	/* 
 	 * pointers to (original) parent process, youngest child, younger sibling,

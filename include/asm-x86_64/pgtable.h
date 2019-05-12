@@ -207,6 +207,8 @@ extern inline void pgd_clear (pgd_t * pgd)
 #define __S110	PAGE_SHARED_EXEC
 #define __S111	PAGE_SHARED_EXEC
 
+// 不正なページテーブルかどうか
+// 常に0のはず
 static inline unsigned long pgd_bad(pgd_t pgd) 
 { 
        unsigned long val = pgd_val(pgd);

@@ -106,10 +106,14 @@ extern unsigned long nr_iowait(void);
 #include <asm/processor.h>
 
 #define TASK_RUNNING		0
-#define TASK_INTERRUPTIBLE	1
+// ある条件が成り立つまで一時停止
+#define TASK_INTERRUPTIBLE	1 
 #define TASK_UNINTERRUPTIBLE	2
+// SIGSTOP, SIGTSTP, SIGTTIN, SIGTTOUシグナルを受信するとなる
 #define TASK_STOPPED		4
+// デバッガにより停止中(ptrace()など)
 #define TASK_TRACED		8
+// プロセスの実行が終了してwait()系のシステムコール発行待ち
 #define EXIT_ZOMBIE		16
 #define EXIT_DEAD		32
 
@@ -571,6 +575,7 @@ int set_current_groups(struct group_info *group_info);
 struct audit_context;		/* See audit.c */
 struct mempolicy;
 
+// プロセス
 struct task_struct {
 	volatile long state;	/* -1 unrunnable, 0 runnable, >0 stopped */
 	struct thread_info *thread_info;

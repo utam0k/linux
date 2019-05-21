@@ -578,7 +578,7 @@ struct mempolicy;
 // プロセス
 struct task_struct {
 	volatile long state;	/* -1 unrunnable, 0 runnable, >0 stopped */
-	struct thread_info *thread_info;
+	struct thread_info *thread_info; // allock_thread_info, free_thread_info
 	atomic_t usage;
 	unsigned long flags;	/* per process flags, defined below */
 	unsigned long ptrace;
@@ -867,9 +867,13 @@ void yield(void);
  */
 extern struct exec_domain	default_exec_domain;
 
+// p93(fig3-2),p94参照
+// 利点
+// - 現在実行中のプロセスのthread_infoが簡単にわかる
 union thread_union {
 	struct thread_info thread_info;
 	unsigned long stack[THREAD_SIZE/sizeof(long)];
+	// unsigned long stack[2048]; // 8KBスタックの場合。4KBスタックのときは1024
 };
 
 #ifndef __HAVE_ARCH_KSTACK_END

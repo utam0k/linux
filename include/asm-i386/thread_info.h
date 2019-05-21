@@ -26,6 +26,7 @@
 #ifndef __ASSEMBLY__
 
 struct thread_info {
+    // task_structと相互参照
 	struct task_struct	*task;		/* main task structure */
 	struct exec_domain	*exec_domain;	/* execution domain */
 	unsigned long		flags;		/* low level flags */
